@@ -25,11 +25,15 @@ repositories {
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-html-builder-jvm")
-    implementation("org.jetbrains:kotlinx-html:0.10.1")
+
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-server-host-common-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
+
     implementation("ch.qos.logback:logback-classic:$logback_version")
+
+    runtimeOnly("org.jetbrains.kotlinx:kotlinx-html:0.11.0")
+
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
