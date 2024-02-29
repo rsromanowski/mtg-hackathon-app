@@ -51,6 +51,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 
     implementation("com.zaxxer:HikariCP:5.1.0")
+    implementation("org.postgresql:postgresql:42.7.2")
     implementation("app.cash.sqldelight:jdbc-driver:2.0.1")
 }
 

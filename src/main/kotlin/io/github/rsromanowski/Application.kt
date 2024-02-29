@@ -18,7 +18,7 @@ fun Application.module() {
 
     DatabaseSingleton.createHikariDataSource(
         environment.config.propertyOrNull("DATABASE_URL")?.getString()
-            ?: error("couldn't find DATABASE_URL")
+            ?: error("DATABASE_URL not configured")
     ).let {
         doDatabaseThings(it)
     }
