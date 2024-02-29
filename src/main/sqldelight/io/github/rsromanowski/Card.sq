@@ -1,0 +1,8 @@
+CREATE TABLE cards (
+  name TEXT NOT NULL,
+  set_code TEXT NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM cards;

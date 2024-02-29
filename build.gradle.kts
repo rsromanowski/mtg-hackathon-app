@@ -5,7 +5,11 @@ val logback_version: String by project
 
 plugins {
     kotlin("jvm") version "1.9.22"
+    kotlin("plugin.serialization") version "1.9.22"
+
     id("io.ktor.plugin") version "2.3.8"
+
+    id("app.cash.sqldelight") version "2.0.1"
 }
 
 group = "io.github.rsromanowski"
@@ -30,10 +34,31 @@ dependencies {
     implementation("io.ktor:ktor-server-host-common-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
 
+    implementation("io.ktor:ktor-client-core")
+    implementation("io.ktor:ktor-client-cio")
+    implementation("io.ktor:ktor-client-logging")
+    implementation("io.ktor:ktor-client-content-negotiation")
+
+    // implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+    implementation("io.ktor:ktor-serialization-kotlinx-json")
+
     implementation("ch.qos.logback:logback-classic:$logback_version")
 
     runtimeOnly("org.jetbrains.kotlinx:kotlinx-html:0.11.0")
 
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+
+    implementation("com.zaxxer:HikariCP:5.1.0")
+    implementation("app.cash.sqldelight:jdbc-driver:2.0.1")
+}
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("rsromanowski")
+            dialect("app.cash.sqldelight:postgresql-dialect:2.0.1")
+        }
+    }
 }
