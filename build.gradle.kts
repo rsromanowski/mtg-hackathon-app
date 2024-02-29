@@ -8,6 +8,8 @@ plugins {
     kotlin("plugin.serialization") version "1.9.22"
 
     id("io.ktor.plugin") version "2.3.8"
+
+    id("app.cash.sqldelight") version "2.0.1"
 }
 
 group = "io.github.rsromanowski"
@@ -47,4 +49,16 @@ dependencies {
 
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+
+    implementation("com.zaxxer:HikariCP:5.1.0")
+    implementation("app.cash.sqldelight:jdbc-driver:2.0.1")
+}
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("rsromanowski")
+            dialect("app.cash.sqldelight:postgresql-dialect:2.0.1")
+        }
+    }
 }

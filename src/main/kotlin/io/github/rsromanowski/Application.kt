@@ -16,6 +16,13 @@ fun main() {
 fun Application.module() {
     configureRouting()
 
-    val cardClient: MagicCardClient = ScryfallClient(log)
-    runBlocking { cardClient.getMkmCards() }
+    DatabaseSingleton.createHikariDataSource(
+        environment.config.propertyOrNull("DATABASE_URL")?.getString()
+            ?: error("couldn't find DATABASE_URL")
+    ).let {
+        doDatabaseThings(it)
+    }
+
+//    val cardClient: MagicCardClient = ScryfallClient(log)
+//    runBlocking { cardClient.getMkmCards() }
 }
