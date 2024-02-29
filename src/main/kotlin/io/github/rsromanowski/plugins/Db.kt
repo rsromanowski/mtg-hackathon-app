@@ -11,10 +11,13 @@ object DatabaseSingleton {
     fun createHikariDataSource(
         url : String,
     ) = HikariDataSource(HikariConfig().apply {
+        dataSourceClassName = "org.postgresql.ds.PGSimpleDataSource"
+
         jdbcUrl = url
         maximumPoolSize = 3
         // isAutoCommit = false
         transactionIsolation = "TRANSACTION_REPEATABLE_READ"
+
         validate()
     })
 }
