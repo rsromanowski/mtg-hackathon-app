@@ -12,6 +12,7 @@ object DatabaseSingleton {
         url : String,
     ) = HikariDataSource(HikariConfig().apply {
         dataSourceClassName = "org.postgresql.ds.PGSimpleDataSource"
+
         jdbcUrl = url
         maximumPoolSize = 3
         // isAutoCommit = false
