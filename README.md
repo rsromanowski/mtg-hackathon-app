@@ -6,3 +6,7 @@ https://mtg-hackathon-app.fly.dev/
 
 ## Database
 `DATABASE_URL` secret configured in fly
+
+## Tools
+### Scryfall
+https://scryfall.com/docs/api
